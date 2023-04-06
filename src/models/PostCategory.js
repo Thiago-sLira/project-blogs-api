@@ -5,13 +5,11 @@ module.exports = (sequelize, DataTypes) => {
     {
       postId: {
         allowNull: false,
-        autoIncrement: true,
         primaryKey: true,
         type: DataTypes.INTEGER
       },
       categoryId: {
         allowNull: false,
-        autoIncrement: true,
         primaryKey: true,
         type: DataTypes.INTEGER
       },
@@ -31,7 +29,7 @@ module.exports = (sequelize, DataTypes) => {
     });
 
     Category.belongsToMany(BlogPost, {
-      as: 'posts',
+      as: 'blogposts',
       foreignKey: 'categoryId',
       otherKey: 'postId',
       through: PostCategory,

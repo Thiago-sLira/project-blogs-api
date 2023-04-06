@@ -16,12 +16,12 @@ module.exports = (sequelize, DataTypes) => {
       timestamps: false
     });
 
-  Category.associate = (model) => {
-    Category.belongsToMany(model.PostCategory, {
-      foreignKey: 'postId',
-      as: 'posts'
-    })
-  }
+  // Category.associate = (model) => {
+  //   Category.belongsToMany(model.PostCategory, {
+  //     foreignKey: 'postId',
+  //     as: 'posts'
+  //   })
+  // };
 
   // hasOne -> Tem Um
   // hasMany -> Tem muitos
