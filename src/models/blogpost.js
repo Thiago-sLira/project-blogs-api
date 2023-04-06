@@ -10,14 +10,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     title: DataTypes.STRING,
     content: DataTypes.STRING,
-    userId: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      references: {
-        model: 'users',
-        key: 'id',
-      },
-    },
+    userId: DataTypes,
     published: DataTypes.DATE,
     updated: DataTypes.DATE
   },
