@@ -1,29 +1,30 @@
 'use strict';
 
 module.exports = (sequelize, DataTypes) => {
-  const User = sequelize.define('User', {
+  const BlogPost = sequelize.define('BlogPost', {
     id: {
       allowNull: false,
       autoIncrement: true,
       primaryKey: true,
       type: DataTypes.INTEGER
     },
-    displayName: DataTypes.STRING,
-    email: DataTypes.STRING,
-    password: DataTypes.STRING,
-    image: DataTypes.STRING
+    title: DataTypes.STRING,
+    content: DataTypes.STRING,
+    userId: DataTypes,
+    published: DataTypes.DATE,
+    updated: DataTypes.DATE
   },
     {
-      tableName: 'users',
+      tableName: 'blog_posts',
       underscored: true,
       timestamps: false
     });
 
-  User.associate = (model) => {
-    User.belongsTo(model.BlogPost, {
+  BlogPost.associate = (model) => {
+    BlogPost.belongsTo(model.User, {
       foreignKey: 'userId',
       as: 'user'
-    })
+    });
   }
 
   // hasOne -> Tem Um
@@ -31,5 +32,5 @@ module.exports = (sequelize, DataTypes) => {
   // belongsTo -> Pertence a
   // belongsToMany -> Pertence a muitos
 
-  return User;
+  return BlogPost;
 };
