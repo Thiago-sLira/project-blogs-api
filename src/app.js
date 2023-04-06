@@ -13,6 +13,7 @@ app.get('/', (_request, response) => {
 app.use(express.json());
 
 app.use(router);
+
 app.use(errorHandler);
 
 // É importante exportar a constante `app`,

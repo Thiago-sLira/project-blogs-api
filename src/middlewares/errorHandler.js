@@ -14,5 +14,6 @@ module.exports = (err, _req, res, _next) => {
         return res.status(401).json({ message: 'Expired or invalid token' });
     }
 
+    console.log(err);
     res.status(500).json({ message: 'Internal server error' });
 };
