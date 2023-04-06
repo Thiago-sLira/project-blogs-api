@@ -11,6 +11,7 @@ const validateNewUserBody = (body) =>
         password: Joi.string().min(6).required().messages({
             'string.min': '"password" length must be at least 6 characters long',
         }),
+        image: Joi.string(),
     }).validate(body);
 
 module.exports = (req, res, next) => {
