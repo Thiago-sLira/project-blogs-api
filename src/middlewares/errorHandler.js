@@ -3,6 +3,7 @@ const ErrorLaunch = require('../utils/ErrorLaunch');
 
 module.exports = (err, _req, res, _next) => {
     if (err instanceof ErrorLaunch) {
+        console.log(err);
         return res.status(err.code).json({ message: err.message });
     }
 

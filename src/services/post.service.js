@@ -1,4 +1,4 @@
-const { Category, BlogPost, PostCategory, User } = require('../models');
+const { Category, BlogPost, PostCategory, User, Sequelize } = require('../models');
 const ErrorLaunch = require('../utils/ErrorLaunch');
 
 const authorizeUser = (userLogged, postFound) => {
@@ -90,10 +90,26 @@ const deletePost = async (postId, userLogged) => {
     await BlogPost.destroy({ where: { id: postId } });
 };
 
+const searchPostByTerm = async (term) => {
+    const postsFound = await BlogPost.findAll({
+        where: {
+            [Sequelize.Op.or]: [
+                { title: { [Sequelize.Op.substring]: term } },
+                { content: { [Sequelize.Op.substring]: term } },
+            ],
+        },
+        include: [{ model: Category, as: 'categories', through: { attributes: [] } },
+            { model: User, as: 'user', attributes: { exclude: ['password'] } }],
+    });
+
+    return postsFound;
+};
+
 module.exports = {
     createNewPost,
     getAllPosts,
     getPostById,
     updatePost,
     deletePost,
+    searchPostByTerm,
 };
