@@ -3,8 +3,10 @@ const postController = require('../controllers/post.controller');
 const validateTokenMiddleware = require('../middlewares/validateToken');
 const validateNewPostBody = require('../middlewares/validateNewPost');
 
-routerPost.post('/', validateTokenMiddleware, validateNewPostBody, postController.createNewPost);
-routerPost.get('/', validateTokenMiddleware, postController.getAllPosts);
-routerPost.get('/:id', validateTokenMiddleware, postController.getPostById);
+routerPost.use(validateTokenMiddleware);
+routerPost.post('/', validateNewPostBody, postController.createNewPost);
+routerPost.get('/', postController.getAllPosts);
+routerPost.get('/:id', postController.getPostById);
+routerPost.put('/:id', validateTokenMiddleware, postController.updatePost);
 
 module.exports = routerPost;
