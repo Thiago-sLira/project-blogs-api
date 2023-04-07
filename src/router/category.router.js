@@ -11,5 +11,6 @@ routerCategory.post(
 
     categoryController.createCategory,
 );
+routerCategory.get('/', validateTokenMiddleware, categoryController.getAllCategories);
 
 module.exports = routerCategory;
