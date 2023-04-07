@@ -1,4 +1,4 @@
-const { Category, BlogPost, PostCategory } = require('../models');
+const { Category, BlogPost, PostCategory, User } = require('../models');
 const ErrorLaunch = require('../utils/ErrorLaunch');
 
 const createNewPost = async ({ title, content, categoryIds }, userId) => {
@@ -22,6 +22,20 @@ const createNewPost = async ({ title, content, categoryIds }, userId) => {
     return postCreated;
 };
 
+const getAllPosts = async () => {
+    const allPosts = await BlogPost.findAll({
+        include: [{ model: Category, as: 'categories', through: { attributes: [] } },
+            { model: User, as: 'user', attributes: { exclude: ['password'] } }],
+    });
+
+    if (!allPosts.length) {
+        throw new ErrorLaunch('No posts found', 404);
+    }
+
+    return allPosts;
+};
+
 module.exports = {
     createNewPost,
+    getAllPosts,
 };
