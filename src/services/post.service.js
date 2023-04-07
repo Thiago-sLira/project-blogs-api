@@ -60,7 +60,14 @@ const updatePost = async (postId, contentToUpdate, userLogged) => {
         throw new ErrorLaunch('Unauthorized user', 401);
     }
 
-    return postFound;
+    await BlogPost.update(contentToUpdate, {
+        where: { id: postId },
+        returning: true,
+    });
+
+    const postUpdated = await getPostById(postId);
+
+    return postUpdated;
 };
 
 module.exports = {
