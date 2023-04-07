@@ -1,7 +1,8 @@
 const routerPost = require('express').Router();
 const postController = require('../controllers/post.controller');
 const validateTokenMiddleware = require('../middlewares/validateToken');
+const validateNewPostBody = require('../middlewares/validateNewPost');
 
-routerPost.post('/', validateTokenMiddleware, postController.createNewPost);
+routerPost.post('/', validateTokenMiddleware, validateNewPostBody, postController.createNewPost);
 
 module.exports = routerPost;
