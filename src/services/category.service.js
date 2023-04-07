@@ -1,4 +1,5 @@
 const { Category } = require('../models');
+const ErrorLaunch = require('../utils/ErrorLaunch');
 
 const createCategory = async (name) => {
     const newCategory = await Category.create({ name });
@@ -10,7 +11,7 @@ const getAllCategories = async () => {
     const allCategories = await Category.findAll();
 
     if (!allCategories.length) {
-        throw new Error('No categories registered');
+        throw new ErrorLaunch('No categories registered', 404);
     }
 
     return allCategories;

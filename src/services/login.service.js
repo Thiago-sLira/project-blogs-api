@@ -9,7 +9,7 @@ const userLogin = async ({ email, password }) => {
         throw new ErrorLaunch('Invalid fields', 400);
     }
 
-    const token = generateToken({ email });
+    const token = generateToken({ id: user.id, email });
 
     return { token };
 };

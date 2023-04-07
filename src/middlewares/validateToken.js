@@ -7,7 +7,8 @@ module.exports = (req, res, next) => {
             return res.status(401).json({ message: 'Token not found' });
         }
 
-        validateToken(authorization);
+        const decodedToken = validateToken(authorization);
+        req.user = decodedToken;
 
         next();
     } catch (error) {
