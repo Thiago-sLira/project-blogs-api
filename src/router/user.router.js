@@ -4,7 +4,9 @@ const validateNewUserMiddleware = require('../middlewares/validateNewUser');
 const validateTokenMiddleware = require('../middlewares/validateToken');
 
 routerUser.post('/', validateNewUserMiddleware, userController.createNewUser);
-routerUser.get('/', validateTokenMiddleware, userController.getAllUsers);
-routerUser.get('/:id', validateTokenMiddleware, userController.getUserById);
+routerUser.use(validateTokenMiddleware);
+routerUser.get('/', userController.getAllUsers);
+routerUser.get('/:id', userController.getUserById);
+routerUser.delete('/me', userController.deleteUser);
 
 module.exports = routerUser;

@@ -85,8 +85,6 @@ const deletePost = async (postId, userLogged) => {
 
     authorizeUser(userLogged, postFound);
 
-    await PostCategory.destroy({ where: { postId } });
-
     await BlogPost.destroy({ where: { id: postId } });
 };
 
