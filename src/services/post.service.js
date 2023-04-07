@@ -1,6 +1,22 @@
 const { Category, BlogPost, PostCategory, User } = require('../models');
 const ErrorLaunch = require('../utils/ErrorLaunch');
 
+const authorizeUser = (userLogged, postFound) => {
+    if (userLogged.id !== postFound.userId) {
+        throw new ErrorLaunch('Unauthorized user', 401);
+    }
+};
+
+const verifyIfPostExists = async (postId) => {
+    const postFound = await BlogPost.findOne({ where: { id: postId } });
+
+    if (!postFound) {
+        throw new ErrorLaunch('Post does not exist', 404);
+    }
+
+    return postFound;
+};
+
 const createNewPost = async ({ title, content, categoryIds }, userId) => {
     const promisesCategories = categoryIds.map((id) => Category.findOne({ where: { id } }));
     const categories = await Promise.all(promisesCategories);
@@ -50,15 +66,9 @@ const getPostById = async (id) => {
 };
 
 const updatePost = async (postId, contentToUpdate, userLogged) => {
-    const postFound = await BlogPost.findOne({ where: { id: postId } });
+    const postFound = await verifyIfPostExists(postId);
 
-    if (!postFound) {
-        throw new ErrorLaunch('Post does not exist', 404);
-    }
-
-    if (userLogged.id !== postFound.userId) {
-        throw new ErrorLaunch('Unauthorized user', 401);
-    }
+    authorizeUser(userLogged, postFound);
 
     await BlogPost.update(contentToUpdate, {
         where: { id: postId },
@@ -70,9 +80,20 @@ const updatePost = async (postId, contentToUpdate, userLogged) => {
     return postUpdated;
 };
 
+const deletePost = async (postId, userLogged) => {
+    const postFound = await verifyIfPostExists(postId);
+
+    authorizeUser(userLogged, postFound);
+
+    await PostCategory.destroy({ where: { postId } });
+
+    await BlogPost.destroy({ where: { id: postId } });
+};
+
 module.exports = {
     createNewPost,
     getAllPosts,
     getPostById,
     updatePost,
+    deletePost,
 };
