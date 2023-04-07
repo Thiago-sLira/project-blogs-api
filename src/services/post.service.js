@@ -49,8 +49,23 @@ const getPostById = async (id) => {
     return postFound;
 };
 
+const updatePost = async (postId, contentToUpdate, userLogged) => {
+    const postFound = await BlogPost.findOne({ where: { id: postId } });
+
+    if (!postFound) {
+        throw new ErrorLaunch('Post does not exist', 404);
+    }
+
+    if (userLogged.id !== postFound.userId) {
+        throw new ErrorLaunch('Unauthorized user', 401);
+    }
+
+    return postFound;
+};
+
 module.exports = {
     createNewPost,
     getAllPosts,
     getPostById,
+    updatePost,
 };
