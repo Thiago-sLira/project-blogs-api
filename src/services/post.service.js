@@ -40,8 +40,10 @@ const createNewPost = async ({ title, content, categoryIds }, userId) => {
 
 const getAllPosts = async () => {
     const allPosts = await BlogPost.findAll({
-        include: [{ model: Category, as: 'categories', through: { attributes: [] } },
-            { model: User, as: 'user', attributes: { exclude: ['password'] } }],
+        include: [
+            { model: Category, as: 'categories', through: { attributes: [] } },
+            { model: User, as: 'user', attributes: { exclude: ['password'] } },
+        ],
     });
 
     if (!allPosts.length) {
@@ -54,8 +56,10 @@ const getAllPosts = async () => {
 const getPostById = async (id) => {
     const postFound = await BlogPost.findOne({
         where: { id },
-        include: [{ model: Category, as: 'categories', through: { attributes: [] } },
-            { model: User, as: 'user', attributes: { exclude: ['password'] } }],
+        include: [
+            { model: Category, as: 'categories', through: { attributes: [] } },
+            { model: User, as: 'user', attributes: { exclude: ['password'] } },
+        ],
     });
 
     if (!postFound) {
@@ -96,8 +100,10 @@ const searchPostByTerm = async (term) => {
                 { content: { [Sequelize.Op.substring]: term } },
             ],
         },
-        include: [{ model: Category, as: 'categories', through: { attributes: [] } },
-            { model: User, as: 'user', attributes: { exclude: ['password'] } }],
+        include: [
+            { model: Category, as: 'categories', through: { attributes: [] } },
+            { model: User, as: 'user', attributes: { exclude: ['password'] } },
+        ],
     });
 
     return postsFound;
