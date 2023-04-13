@@ -9,18 +9,19 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       display_name: {
-        type: Sequelize.STRING(255)
+        type: Sequelize.STRING(255),
+        allowNull: false,
       },
       email: {
         type: Sequelize.STRING(255),
         allowNull: false,
-        unique: true,
       },
       password: {
-        type: Sequelize.STRING(255)
+        type: Sequelize.STRING(255),
+        allowNull: false,
       },
       image: {
-        type: Sequelize.STRING(255)
+        type: Sequelize.STRING(255),
       },
     });
   },
