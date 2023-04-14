@@ -1,13 +1,28 @@
 # :construction: README customizado em construção ! :construction:
-<!-- Olá, Tryber!
-Esse é apenas um arquivo inicial para o README do seu projeto no qual você pode customizar e reutilizar todas as vezes que for executar o trybe-publisher.
 
-Para deixá-lo com a sua cara, basta alterar o seguinte arquivo da sua máquina: ~/.student-repo-publisher/custom/_NEW_README.md
+<h1>Título do projeto</h1>
+<p>Um parágrafo da descrição do projeto vai aqui</p>
 
-É essencial que você preencha esse documento por conta própria, ok?
-Não deixe de usar nossas dicas de escrita de README de projetos, e deixe sua criatividade brilhar!
-:warning: IMPORTANTE: você precisa deixar nítido:
-- quais arquivos/pastas foram desenvolvidos por você; 
-- quais arquivos/pastas foram desenvolvidos por outra pessoa estudante;
-- quais arquivos/pastas foram desenvolvidos pela Trybe.
--->
+<h2>🚀 Objetivo</h2>
+<p>Essas instruções permitirão que você obtenha uma cópia do projeto em operação na sua máquina local para fins de desenvolvimento e teste.</p>
+
+<h2>🛠️ Construído com</h2>
+<p>Mencione as ferramentas que você usou para criar seu projeto</p>
+
+<p>Dropwizard - O framework web usado<br>
+Maven - Gerente de Dependência<br>
+ROME - Usada para gerar RSS</p>
+
+<h2>🤝 Colaborando</h2>
+<p>Por favor, leia o COLABORACAO.md para obter detalhes sobre o nosso código de conduta e o processo para nos enviar pedidos de solicitação.</p>
+
+<h2>✒️ Autores</h2>
+<p>Mencione todos aqueles que ajudaram a levantar o projeto desde o seu início</p>
+
+<p>Um desenvolvedor - Trabalho Inicial - umdesenvolvedor<br>
+Fulano De Tal - Documentação - fulanodetal</p>
+
+<p>Você também pode ver a lista de todos os colaboradores que participaram deste projeto.</p>
+
+<h2>🎁 Expressões de gratidão</h2>
+<p>Conte a outras pessoas sobre este projeto 📢
