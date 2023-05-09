@@ -7,7 +7,6 @@
 
 
 <h2>🛠️ Built with</h2>
-<p>Mention the tools you used to create your project</p>
 <span><strong><em>Node.js</em></strong></span><br>
 <span><strong><em>REST API</em></strong></span><br>
 <span><strong><em>Express.js</em></strong></span><br>
