@@ -1,13 +1,17 @@
-# :construction: README customizado em construção ! :construction:
-<!-- Olá, Tryber!
-Esse é apenas um arquivo inicial para o README do seu projeto no qual você pode customizar e reutilizar todas as vezes que for executar o trybe-publisher.
+<h1>Blogs API</h1>
+<p>A database and an API for producing content for a blog.</p>
 
-Para deixá-lo com a sua cara, basta alterar o seguinte arquivo da sua máquina: ~/.student-repo-publisher/custom/_NEW_README.md
+<h2>🚀 Objective</h2>
+<p>The objective was to build a Node.js application using the Sequelize package to create a CRUD for posts. Develop endpoints that are connected to the database following the principles of REST. To make a post, it was necessary to work on the relationship between user and post.</p><br>
+<p>The most challenging part of this project was performing validations for each endpoint, also creating authentication with JsonWebToken. Checking the database for user existence and if the token is valid were the moments when I developed the most.</p>
 
-É essencial que você preencha esse documento por conta própria, ok?
-Não deixe de usar nossas dicas de escrita de README de projetos, e deixe sua criatividade brilhar!
-:warning: IMPORTANTE: você precisa deixar nítido:
-- quais arquivos/pastas foram desenvolvidos por você; 
-- quais arquivos/pastas foram desenvolvidos por outra pessoa estudante;
-- quais arquivos/pastas foram desenvolvidos pela Trybe.
--->
+
+<h2>🛠️ Built with</h2>
+<span><strong><em>Node.js</em></strong></span><br>
+<span><strong><em>REST API</em></strong></span><br>
+<span><strong><em>Express.js</em></strong></span><br>
+<span><strong><em>Sequelize</em></strong></span><br>
+<span><strong><em>Docker</em></strong></span><br>
+
+<h2>🎁 Expressions of Gratitude</h2>
+<p>Tell others about this project. 📢</p>
